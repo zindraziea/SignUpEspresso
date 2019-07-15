@@ -33,6 +33,7 @@ dependencies {
 
     // App's dependencies, including test
     implementation 'com.android.support:support-annotations:28.0.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // Testing-only dependencies
 }

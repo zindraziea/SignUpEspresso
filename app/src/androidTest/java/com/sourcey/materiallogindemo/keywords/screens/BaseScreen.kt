@@ -21,7 +21,6 @@ import org.hamcrest.Matcher
 import org.hamcrest.Matchers.any
 import java.util.concurrent.CountDownLatch
 
-
 private val TIMEOUT_MILLISECONDS = 10000
 private val SLEEP_MILLISECONDS = 100
 private val BUFFER_MILLISECONDS = 500
@@ -119,16 +118,26 @@ open class BaseScreen {
         return found[0]
     }
 
-    fun withItemHint(matcherText: String): Matcher<View> {
-        return object : BoundedMatcher<View, TextInputLayout>(TextInputLayout::class.java) {
-
-            override fun describeTo(description: Description) {
-                description.appendText("with item hint: $matcherText")
-            }
-
-            override fun matchesSafely(editTextField: TextInputLayout): Boolean {
-                return matcherText.equals(editTextField.hint!!.toString(), ignoreCase = true)
+    fun waitForElementToEnabled(interaction: ViewInteraction, millis: Long = TIMEOUT_MILLISECONDS.toLong()): Boolean? {
+        val maxAttempts = millis / SLEEP_MILLISECONDS
+        var i = 0
+        while (i++ < (1 + maxAttempts.toInt())) {
+            try {
+                interaction.check(matches(ViewMatchers.isDisplayed()))
+                interaction.check(matches(ViewMatchers.isEnabled()))
+                Log.i("ViewChecker", "Not sleeping")
+                Thread.sleep(200)
+                return true
+            } catch (e: Throwable) {
+                e.printStackTrace()
+                Log.i("ViewChecker", "sleeping")
+                try {
+                    Thread.sleep(SLEEP_MILLISECONDS.toLong())
+                } catch (e: Exception) {
+                    Log.i("Sleep", "sleeping error")
+                }
             }
         }
+        return false
     }
 }

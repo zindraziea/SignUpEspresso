@@ -13,13 +13,16 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withParent
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.sourcey.materiallogindemo.R
-import com.sourcey.materiallogindemo.utility.ToastMatcher
-import com.sourcey.materiallogindemo.utility.VerifyTextEditUtility
+import com.sourcey.materiallogindemo.utils.ToastMatcher
+import com.sourcey.materiallogindemo.utils.VerifyTextEditUtility
+import com.sourcey.materiallogindemo.utils.withItemHint
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.endsWith
 
 class LoginScreen : BaseScreen() {
     private val verifyTextEdit by lazy { VerifyTextEditUtility() }
+    private val txtToastError = "Login failed"
+
 //    private val btnSignUp: ViewInteraction by lazy { onView(withId(R.id.link_signup)) }
 //    private val txtInputEmail: ViewInteraction by lazy { onView(withId(R.id.input_email)) }
 //    private val txtInputPassword: ViewInteraction by lazy { onView(withId(R.id.input_password)) }
@@ -27,9 +30,10 @@ class LoginScreen : BaseScreen() {
 
     private val btnSignUp: ViewInteraction by lazy { onView(withText("No account yet? Create one")) }
     private val txtInputEmail: ViewInteraction by lazy { onView(allOf(withClassName(endsWith("EditText")), isDescendantOfA(withItemHint("Email")))) }
-//    private val txtInputEmail: ViewInteraction by lazy { onView(allOf(withClassName(endsWith("EditText")), withParent(withParent(withItemHint("Email"))))) }
+    private val txtInputEmail2: ViewInteraction by lazy { onView(allOf(withClassName(endsWith("EditText")), withParent(withParent(withItemHint("Email"))))) }
     private val txtInputPassword: ViewInteraction by lazy { onView(withId(R.id.input_password)) }
     private val btnLogin: ViewInteraction by lazy { onView(allOf(withClassName(endsWith("Button")), withText("LOGIN"))) }
+
 
     fun iCanSeeLoginScreen() {
         waitElementUntilDisplayed(btnLogin)
@@ -68,12 +72,15 @@ class LoginScreen : BaseScreen() {
         btnSignUp.check(matches(isDisplayed())).perform(click())
     }
 
-    fun iVerifyEmailError(errorMessage: String?) {
+    fun iVerifyInputEmailErrorMessage(errorMessage: String?) {
         verifyTextEdit.verifyTextErrorMessage(txtInputEmail, errorMessage)
     }
 
-    fun iVerifyPasswordError(errorMessage: String?) {
+    fun iVerifyInputPasswordErrorMessage(errorMessage: String?) {
         verifyTextEdit.verifyTextErrorMessage(txtInputPassword, errorMessage)
-        onView(withText("Login failed")).inRoot(ToastMatcher()).check(matches(isDisplayed()))
+    }
+
+    fun iVerifyToastErrorMessage() {
+        onView(withText(txtToastError)).inRoot(ToastMatcher()).check(matches(isDisplayed()))
     }
 }

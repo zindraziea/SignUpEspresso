@@ -11,7 +11,7 @@ import androidx.test.espresso.matcher.ViewMatchers.hasErrorText
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.sourcey.materiallogindemo.R
-import com.sourcey.materiallogindemo.utility.VerifyTextEditUtility
+import com.sourcey.materiallogindemo.utils.VerifyTextEditUtility
 
 class RegisterScreen : BaseScreen() {
     private val txtInputName: ViewInteraction by lazy { onView(withId(R.id.input_name)) }

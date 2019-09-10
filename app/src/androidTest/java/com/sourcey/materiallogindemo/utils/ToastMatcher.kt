@@ -1,4 +1,4 @@
-package com.sourcey.materiallogindemo.utility
+package com.sourcey.materiallogindemo.utils
 
 import android.view.WindowManager
 import androidx.test.espresso.Root

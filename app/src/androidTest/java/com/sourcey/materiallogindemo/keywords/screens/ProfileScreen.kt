@@ -24,6 +24,6 @@ class ProfileScreen : BaseScreen() {
     fun iClickBtnLogOut() {
         btnLogOut.check(matches(isDisplayed()))
         btnLogOut.perform(click())
-//        btnLogOut.perform(ViewActions.repeatedlyUntil(click(), not(isDisplayed()), 5))
+        // btnLogOut.perform(repeatedlyUntil(click(), not(isDisplayed()), 5))
     }
 }

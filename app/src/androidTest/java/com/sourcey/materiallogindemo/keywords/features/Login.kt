@@ -14,9 +14,10 @@ object Login {
         loginScreen.iClickBtnLogin()
     }
 
-    fun verifyErrorMessage(emailError: String?, passwordError: String?) {
-        loginScreen.iVerifyEmailError(emailError)
-        loginScreen.iVerifyPasswordError(passwordError)
+    fun verifyLoginFailedErrorMessage(emailError: String?, passwordError: String?) {
+        loginScreen.iVerifyInputEmailErrorMessage(emailError)
+        loginScreen.iVerifyInputPasswordErrorMessage(passwordError)
+        loginScreen.iVerifyToastErrorMessage()
     }
 
     fun verifyLogInSuccess() {

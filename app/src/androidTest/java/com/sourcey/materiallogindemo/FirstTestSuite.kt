@@ -1,5 +1,5 @@
 package com.sourcey.materiallogindemo
 
-class MainActivityTest {
+class FirstTestSuite {
 
 }

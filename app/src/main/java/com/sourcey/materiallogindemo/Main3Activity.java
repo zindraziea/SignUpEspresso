@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 public class Main3Activity extends AppCompatActivity {
     View parrentView;
+    View parrentView2;
     CardView cardLondon;
     CardView cardNewYork;
     CardView cardTokyo;
@@ -19,9 +20,14 @@ public class Main3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
-        TextView tvLondon = (TextView) findViewById(R.id.tvLondon);
-        TextView tvNewYork = (TextView) findViewById(R.id.tvNewYork);
-        TextView tvTokyo = (TextView) findViewById(R.id.tvTokyo);
+        parrentView2 = findViewById(R.id.layout1);
+
+//        TextView tvLondon = (TextView) findViewById(R.id.tvLondon);
+//        TextView tvNewYork = (TextView) findViewById(R.id.tvNewYork);
+//        TextView tvTokyo = (TextView) findViewById(R.id.tvTokyo);
+        TextView tvLondon = (TextView) parrentView2.findViewWithTag("tvLondon");
+        TextView tvNewYork = (TextView) parrentView2.findViewWithTag("tvNewYork");
+        TextView tvTokyo = (TextView) parrentView2.findViewWithTag("tvTokyo");
 
         parrentView = findViewById(R.id.layout1);
         cardLondon = (CardView) parrentView.findViewWithTag("1");

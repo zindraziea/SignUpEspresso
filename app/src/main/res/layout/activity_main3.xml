@@ -21,7 +21,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Flight tickets Thu, 31 Oct \nFrom Bangkok\n"
+                android:text="Flight tickets Today \nFrom Bangkok\n"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -84,7 +84,8 @@
                         android:textColor="@android:color/white" />
 
                     <TextView
-                        android:id="@+id/tvLondon"
+
+                        android:tag="tvLondon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"
@@ -115,7 +116,7 @@
                         android:textColor="@android:color/white" />
 
                     <TextView
-                        android:id="@+id/tvNewYork"
+                        android:tag="tvNewYork"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"
@@ -146,7 +147,7 @@
                         android:textColor="@android:color/white" />
 
                     <TextView
-                        android:id="@+id/tvTokyo"
+                        android:tag="tvTokyo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"

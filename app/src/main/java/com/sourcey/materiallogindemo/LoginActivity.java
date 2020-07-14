@@ -18,18 +18,23 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
-    @BindView(R.id.input_email) EditText _emailText;
-    @BindView(R.id.input_password) EditText _passwordText;
-    @BindView(R.id.btn_login) Button _loginButton;
-    @BindView(R.id.link_signup) TextView _signupLink;
-    @BindView(R.id.link_ticket) TextView _checkTicketLink;
+    @BindView(R.id.input_email)
+    EditText _emailText;
+    @BindView(R.id.input_password)
+    EditText _passwordText;
+    @BindView(R.id.btn_login)
+    Button _loginButton;
+    @BindView(R.id.link_signup)
+    TextView _signupLink;
+    @BindView(R.id.link_ticket)
+    TextView _checkTicketLink;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        
+
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -50,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        /*
         _checkTicketLink.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -59,8 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
                 overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
-        });
-
+        }); */
     }
 
     public void login() {
@@ -114,8 +119,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginSuccess() {
+        /*
         _loginButton.setEnabled(true);
         finish();
+        */
+
+        Intent intent = new Intent(getApplicationContext(), ProfilesActivity.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
 
     public void onLoginFailed() {
@@ -144,7 +156,7 @@ public class LoginActivity extends AppCompatActivity {
             _passwordText.setError(null);
         }
 
-        if(valid) {
+        if (valid) {
             if (email.equals(LoginData.email) && password.equals(LoginData.password)) {
                 _emailText.setError(null);
                 _passwordText.setError(null);

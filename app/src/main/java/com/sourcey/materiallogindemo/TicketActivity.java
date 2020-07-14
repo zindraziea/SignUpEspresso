@@ -1,5 +1,6 @@
 package com.sourcey.materiallogindemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -64,6 +65,14 @@ public class TicketActivity extends AppCompatActivity {
                     cardTokyo.setVisibility(View.VISIBLE);
                 break;
         }
+    }
+    
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), ProfilesActivity.class);
+        startActivity(intent);
+//        return;
+        finish();
+        overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
 }
 

@@ -1,6 +1,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/menu_edit_profile"
+        android:tag="tag-menu-edit"
+        android:title="@string/menu_edit_profile"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_ticket"
+        android:tag="tag-menu-ticket"
+        android:title="@string/menu_ticket"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_logout"
+        android:tag="tag-menu-logout"
+        android:title="@string/menu_logout"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
 </menu>

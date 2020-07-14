@@ -27,7 +27,7 @@
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:layout_width="328dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
@@ -35,7 +35,7 @@
 
                 <CheckBox
                     android:id="@+id/chkLondon"
-                    android:layout_width="115dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:onClick="changeResult"
@@ -44,7 +44,7 @@
 
                 <CheckBox
                     android:id="@+id/chkNewYork"
-                    android:layout_width="111dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:onClick="changeResult"

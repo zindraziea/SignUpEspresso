@@ -74,7 +74,8 @@
             android:layout_marginBottom="24dp"
             android:gravity="center"
             android:text="Check Ticket Price"
-            android:textSize="16dip" />
+            android:textSize="16dip"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 </ScrollView>

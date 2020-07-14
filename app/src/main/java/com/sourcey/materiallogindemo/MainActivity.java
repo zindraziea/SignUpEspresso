@@ -25,13 +25,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //
-        TextView textView = findViewById(R.id.txt1);
-        textView.setText(LoginData.email);
-
-        //
-
         ButterKnife.bind(this);
         _logout.setOnClickListener(new View.OnClickListener() {
 
@@ -59,12 +52,13 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.menu_edit_profile) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
     public void logout() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);

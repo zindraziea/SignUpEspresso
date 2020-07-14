@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-public class Main3Activity extends AppCompatActivity {
+public class TicketActivity extends AppCompatActivity {
     View parrentView;
     View parrentView2;
     CardView cardLondon;
@@ -18,7 +18,7 @@ public class Main3Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_ticket);
 
         parrentView2 = findViewById(R.id.layout1);
 

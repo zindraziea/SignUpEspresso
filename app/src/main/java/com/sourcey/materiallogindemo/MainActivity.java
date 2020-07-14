@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +25,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //
+        TextView textView = findViewById(R.id.txt1);
+        textView.setText(LoginData.email);
+
+        //
+
         ButterKnife.bind(this);
         _logout.setOnClickListener(new View.OnClickListener() {
 

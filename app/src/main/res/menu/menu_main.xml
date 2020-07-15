@@ -10,6 +10,13 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/menu_edit_pasword"
+        android:tag="tag-menu-password"
+        android:title="@string/menu_edit_password"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/menu_ticket"
         android:tag="tag-menu-ticket"
         android:title="@string/menu_ticket"

@@ -75,6 +75,13 @@ public class ProfilesActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
         }
 
+        if (id == R.id.menu_edit_pasword) {
+            Intent intent = new Intent(getApplicationContext(), EditPasswordActivity.class);
+            startActivity(intent);
+            finish();
+            overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+        }
+
         if (id == R.id.menu_ticket) {
             Intent intent = new Intent(getApplicationContext(), TicketActivity.class);
             startActivity(intent);

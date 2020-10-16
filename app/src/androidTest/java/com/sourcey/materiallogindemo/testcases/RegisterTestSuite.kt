@@ -8,8 +8,6 @@ import androidx.test.espresso.action.ViewActions.pressImeActionButton
 import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.RootMatchers.withDecorView
-import androidx.test.espresso.matcher.ViewMatchers.hasErrorText
 import androidx.test.espresso.matcher.ViewMatchers.hasSibling
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withChild
@@ -24,9 +22,9 @@ import com.sourcey.materiallogindemo.R
 import com.sourcey.materiallogindemo.keywords.features.Login
 import com.sourcey.materiallogindemo.keywords.features.ManageProfileInfo
 import com.sourcey.materiallogindemo.keywords.features.Register
+import com.sourcey.materiallogindemo.utils.verifyToast
 import com.sourcey.materiallogindemo.utils.waitForElementToAppear
 import org.hamcrest.Matchers.allOf
-import org.hamcrest.Matchers.not
 import org.junit.Rule
 import org.junit.Test
 
@@ -35,7 +33,6 @@ class RegisterTestSuite {
     @JvmField
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
-    private val btnLinkSignUp = onView(withId(R.id.link_signup))
     private val loginFeature = Login()
     private val registerFeature = Register()
     private val manageProfileInfo = ManageProfileInfo()
@@ -114,26 +111,10 @@ class RegisterTestSuite {
         val password = "112233"
         val confirmPassword = "112233"
 
-        // goto register input screen
-        btnLinkSignUp.perform(click())
-//        onView(withText("No account yet? Create one")).perform(click())
-//        onView(anyOf(withId(R.id.link_signup), withText("No account yet? Create one"))).perform(click())
-
-        // input info and submit
-        onView(withId(R.id.input_name)).perform(typeText(name))
-        onView(withId(R.id.input_address)).perform(typeText(address), pressImeActionButton())
-        onView(withId(R.id.input_email)).perform(typeText(email))
-        onView(withId(R.id.input_mobile)).perform(scrollTo(), typeText(mobile))
-        Espresso.closeSoftKeyboard()
-        onView(withId(R.id.input_password)).perform(typeText(password))
-        onView(withId(R.id.input_reEnterPassword)).perform(scrollTo(), typeText(confirmPassword), closeSoftKeyboard())
-        onView(withId(R.id.btn_signup)).perform(click())
-
-        onView(withId(R.id.input_mobile)).perform(click()).check(matches(hasErrorText("Enter Valid Mobile Number")))
-
-        onView(withText("Login failed"))
-                .inRoot(withDecorView(not(mActivityTestRule.activity.getWindow().getDecorView())))
-                .check(matches(isDisplayed()))
+        loginFeature.gotoRegisterInputScreen()
+        registerFeature.enterRegisterInfo(name, address, email, mobile, password, confirmPassword)
+        registerFeature.verifyMobileError()
+        verifyToast("Login failed", mActivityTestRule)
     }
 
     @Test
@@ -162,7 +143,32 @@ class RegisterTestSuite {
 
         // validate info
         manageProfileInfo.verifyProfileInfo(newName, newAddress, newEmail, newMobile)
-
     }
 
+    @Test
+    fun tc003() {
+        val userInfo = hashMapOf(
+                "name" to "abc",
+                "address" to "abcd",
+                "email" to "email@email.com",
+                "mobile" to "0886056051",
+                "password" to "999999",
+                "confirmPassword" to "999999"
+        )
+
+        val userInfoNew = hashMapOf(
+                "name" to "accb",
+                "address" to "222/111 Bangkok 10900",
+                "email" to "email@email.com",
+                "mobile" to "0886056051",
+                "password" to "999999",
+                "confirmPassword" to "999999"
+        )
+
+        registerFeature.registerSuccess2(userInfo)
+        manageProfileInfo.gotoUpdateProfileScreen()
+        manageProfileInfo.enterProfileInfo2(userInfoNew)
+        manageProfileInfo.clickSaveUpdateProfile()
+        Thread.sleep(5000)
+    }
 }

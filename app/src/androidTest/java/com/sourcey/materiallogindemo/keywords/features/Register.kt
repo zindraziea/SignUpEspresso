@@ -27,4 +27,21 @@ class Register {
         Register().enterRegisterInfo(name, address, email, mobile, password, confirmPassword)
         ManageProfileInfo().verifyProfileInfo(name, address, email, mobile)
     }
+
+    fun registerSuccess2(userInfo: Map<String, String>) {
+        Login().gotoRegisterInputScreen()
+        Register().enterRegisterInfo(
+                userInfo.getValue("name"),
+                userInfo.getValue("address"),
+                userInfo.getValue("email"),
+                userInfo.getValue("mobile"),
+                userInfo.getValue("password"),
+                userInfo.getValue("confirmPassword"))
+        ManageProfileInfo().verifyProfileInfo(
+                userInfo.getValue("name"), userInfo.getValue("address"), userInfo.getValue("email"), userInfo.getValue("mobile"))
+    }
+
+    fun verifyMobileError() {
+        registerScreen.iVerifyMobileError()
+    }
 }

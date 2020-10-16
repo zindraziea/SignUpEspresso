@@ -6,6 +6,10 @@ import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
 import androidx.test.espresso.action.ViewActions.pressImeActionButton
 import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.action.ViewActions.typeText
+import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.hasErrorText
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.sourcey.materiallogindemo.R
 
@@ -44,5 +48,9 @@ class RegisterInputScreen {
 
     fun iClickSubmit() {
         btnSubmit.perform(scrollTo(), click())
+    }
+
+    fun iVerifyMobileError() {
+        inputMobile.perform(click()).check(matches(hasErrorText("Enter Valid Mobile Number")))
     }
 }

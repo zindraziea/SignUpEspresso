@@ -25,7 +25,7 @@ class ManageProfileInfo {
         updateProfileScreen.iCanSeeUpdateProfileScreen()
     }
 
-    fun enterProfileInfo(name: String, address: String, email: String, mobile: String) {
+    fun enterProfileInfo(name: String = "", address: String, email: String, mobile: String) {
         updateProfileScreen.iInputName(name)
         updateProfileScreen.iInputEmail(address)
         updateProfileScreen.iInputAddress(email)

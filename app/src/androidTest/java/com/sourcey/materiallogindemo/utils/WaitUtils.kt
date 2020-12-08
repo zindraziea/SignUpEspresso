@@ -15,7 +15,7 @@ fun waitForElementToAppear(interaction: ViewInteraction, millis: Long = TIMEOUT_
         try {
             interaction.check(matches(isDisplayed()))
             Log.i("ViewChecker", "Not sleeping")
-            Thread.sleep(200)
+            Thread.sleep(100)
             return true
         } catch (e: Throwable) {
             e.printStackTrace()
@@ -29,3 +29,4 @@ fun waitForElementToAppear(interaction: ViewInteraction, millis: Long = TIMEOUT_
     }
     return false
 }
+
